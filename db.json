@@ -1,0 +1,24 @@
+{
+  "sensors": [
+    {
+      "id": 1,
+      "name": "Frigo A - Biologie",
+      "sensor_type": "DHT11",
+      "esp8266_chip_id": "ESP-9F12AB",
+      "location": "Salle 1",
+      "status": "ONLINE",
+      "last_seen_at": "2026-01-01T20:40:00+01:00",
+      "thresholds": { "temp_min": 2, "temp_max": 8, "hum_min": 35, "hum_max": 65 }
+    },
+    {
+      "id": 2,
+      "name": "Frigo B - Chimie",
+      "sensor_type": "DHT11",
+      "esp8266_chip_id": "ESP-77CC01",
+      "location": "Salle 2",
+      "status": "OFFLINE",
+      "last_seen_at": "2026-01-01T19:20:00+01:00",
+      "thresholds": { "temp_min": 2, "temp_max": 8, "hum_min": 30, "hum_max": 70 }
+    }
+  ]
+}
