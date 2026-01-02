@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getAuditLogs } from "../../services/auditService";
-import { AuditLog } from "../../models/AuditLog";
+import { getAuditLogs } from "../services/auditService";
+import { AuditLog } from "../models/AuditLog";
 
 export default function AuditLogs() {
     const [logs, setLogs] = useState<AuditLog[]>([]);

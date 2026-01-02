@@ -6,15 +6,7 @@ interface AlertResponse {
     results: Alert[];
 }
 
-/**
- * Récupérer les alertes ouvertes d’un capteur
- */
-export const getOpenAlertsBySensor = async (
-    sensorId: number
-): Promise<Alert[]> => {
-    const response = await apiClient.get<AlertResponse>(
-        `/api/alerts/?status=OPEN&sensor_id=${sensorId}`
-    );
-
-    return response.data.results;
+export const getOpenAlertsBySensor = async (sensorId: number): Promise<Alert[]> => {
+    const res = await apiClient.get<AlertResponse>(`/api/alerts/?status=OPEN&sensor_id=${sensorId}`);
+    return res.data.results;
 };
