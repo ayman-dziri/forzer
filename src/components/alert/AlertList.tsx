@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert } from "../../models/Alert";
-import { getOpenAlertsBySensor } from "../../services/AlertService";
+import { getOpenAlertsBySensor } from "../../services/alertService";
 import AlertItem from "./AlertItem";
 
 interface Props {

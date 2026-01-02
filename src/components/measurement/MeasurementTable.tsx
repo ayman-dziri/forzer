@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Measurement } from "../../models/Measurement";
-import { getMeasurements } from "../../services/MeasurementService";
+import { getMeasurements } from "../../services/measurementService";
 
 interface Props {
     sensorId: number;

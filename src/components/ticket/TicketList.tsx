@@ -4,7 +4,7 @@ import {
     getOpenTickets,
     assignTicket,
     closeTicket
-} from "../../services/TicketService";
+} from "../../services/ticketService";
 export default function TicketList() {
     const [tickets, setTickets] = useState<Ticket[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
