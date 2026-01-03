@@ -1,0 +1,38 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.pageTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.alertListWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Cas où il n'y a pas d'alerte */
+.emptyMessage {
+    font-style: italic;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive : mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 12px;
+    }
+
+    .pageTitle {
+        font-size: 1.5rem;
+    }
+}

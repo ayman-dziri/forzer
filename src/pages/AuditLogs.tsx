@@ -1,46 +1,60 @@
 import { useEffect, useState } from "react";
 import { getAuditLogs } from "../services/auditService";
 import { AuditLog } from "../models/AuditLog";
+import Loader from "../components/common/Loader";
+import styles from "./AuditLogs.module.css";
 
 export default function AuditLogs() {
     const [logs, setLogs] = useState<AuditLog[]>([]);
     const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getAuditLogs(page).then(res => setLogs(res.results));
-    }, [page]);
+        setLoading(true);
+        getAuditLogs()
+            .then(setLogs)
+            .catch(() => setLogs([]))
+            .finally(() => setLoading(false));
+    }, []);
+
+    if (loading) return <Loader />;
 
     return (
-        <div>
-            <h2>Audit Logs</h2>
+        <div className={styles.container}>
+            <h2 className={styles.pageTitle}>Audit Logs</h2>
 
-            <table>
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Acteur</th>
-                    <th>Action</th>
-                    <th>Entité</th>
-                </tr>
-                </thead>
-                <tbody>
-                {logs.map(log => (
-                    <tr key={log.id}>
-                        <td>{log.timestamp}</td>
-                        <td>{log.actor.full_name}</td>
-                        <td>{log.action}</td>
-                        <td>{log.entity} #{log.entity_id}</td>
+            <div className={styles.tableWrapper}>
+                <table className={styles.table}>
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Acteur</th>
+                        <th>Action</th>
+                        <th>Entité</th>
                     </tr>
-                ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {logs.map(log => (
+                        <tr key={log.id}>
+                            <td>{new Date(log.timestamp).toLocaleString()}</td>
+                            <td>{log.actor?.full_name ?? "Système"}</td>
+                            <td>{log.action}</td>
+                            <td>{log.entity} #{log.entity_id}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
 
-            <button onClick={() => setPage(p => Math.max(1, p - 1))}>
-                ◀ Précédent
-            </button>
-            <button onClick={() => setPage(p => p + 1)}>
-                Suivant ▶
-            </button>
+            <div className={styles.pagination}>
+                <button
+                    disabled={page === 1}
+                    onClick={() => setPage(p => Math.max(1, p - 1))}
+                >
+                    ◀ Précédent
+                </button>
+                <button onClick={() => setPage(p => p + 1)}>Suivant ▶</button>
+            </div>
         </div>
     );
 }

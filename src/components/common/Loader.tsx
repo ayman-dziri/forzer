@@ -1,9 +1,9 @@
-import "./Loader.css";
+import styles from "./Loader.module.css";
 
 export default function Loader() {
     return (
-        <div className="loader-container">
-            <div className="spinner" />
+        <div className={styles.loaderContainer}>
+            <div className={styles.spinner} />
             <p>Chargement...</p>
         </div>
     );

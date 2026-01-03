@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: "https://aouissianass.pythonanywhere.com/api",
     headers: {
         "Content-Type": "application/json",
     },

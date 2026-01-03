@@ -1,11 +1,14 @@
 import React from "react";
 import SensorList from "../components/sensor/SensorList";
+import styles from "./Dashboard.module.css";
 
 const Dashboard: React.FC = () => {
     return (
-        <div>
-            <h1>Dashboard Frozer</h1>
-            <SensorList />
+        <div className={styles.container}>
+            <h1 className={styles.pageTitle}>Dashboard Frozer</h1>
+            <div className={styles.sensorList}>
+                <SensorList />
+            </div>
         </div>
     );
 };

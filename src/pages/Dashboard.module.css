@@ -1,0 +1,30 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.pageTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.sensorList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+/* Responsive : mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 12px;
+    }
+
+    .pageTitle {
+        font-size: 1.6rem;
+    }
+}

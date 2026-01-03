@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import SensorDetails from "./pages/SensorDetails";
-import Alerts from "./pages/Alerts";
-import Tickets from "./pages/Tickets";
-import AuditLogs from "./pages/AuditLogs";
-import Exports from "./pages/Exports";
+import Dashboard from "../src/pages/Dashboard";
+import SensorDetails from "../src/pages/SensorDetails";
+import Alerts from "./pages/Alert";
+import Tickets from "../src/pages/Tickets";
+import AuditLogs from "../src/pages/AuditLogs";
+import Exports from "../src/pages/Exports";
 
 const App: React.FC = () => {
     return (

@@ -1,4 +1,5 @@
 import { Alert } from "../../models/Alert";
+import styles from "./AlertItem.module.css";
 
 interface Props {
     alert: Alert;
@@ -6,27 +7,27 @@ interface Props {
 
 export default function AlertItem({ alert }: Props) {
     return (
-        <div style={{ border: "1px solid red", marginBottom: 8, padding: 8 }}>
-            <h4>🚨 Alerte #{alert.id}</h4>
+        <div className={styles.card}>
+            <h4 className={styles.title}>🚨 Alerte #{alert.id}</h4>
 
-            <p>
+            <p className={styles.row}>
                 <strong>Gravité :</strong> {alert.severity}
             </p>
 
-            <p>
+            <p className={styles.row}>
                 <strong>Raison :</strong> {alert.reason}
             </p>
 
-            <p>
+            <p className={styles.row}>
                 <strong>Statut :</strong> {alert.status}
             </p>
 
-            <p>
+            <p className={styles.row}>
                 <strong>Escalade :</strong> niveau {alert.current_escalation_level}
             </p>
 
             {alert.next_escalation_at && (
-                <p>
+                <p className={styles.timestamp}>
                     ⏭ Prochaine escalade :{" "}
                     {new Date(alert.next_escalation_at).toLocaleString()}
                 </p>

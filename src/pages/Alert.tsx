@@ -1,21 +1,30 @@
 import { useEffect, useState } from "react";
-import { Alert } from "../../models/Alert";
-import { getOpenAlerts } from "../../services/alertService";
-import AlertItem from "./AlertItem";
-import Loader from "../common/Loader";
-import styles from "./AlertList.module.css";
+import { Alert } from "../models/Alert";
+import { getOpenAlerts, getOpenAlertsBySensor } from "../services/alertService";
+import AlertItem from "../components/alert/AlertItem";
+import Loader from "../components/common/Loader";
+import styles from "./Alert.module.css";
 
-export default function AlertList() {
+interface Props {
+    sensorId?: number; // optionnel
+}
+
+export default function AlertList({ sensorId }: Props) {
     const [alerts, setAlerts] = useState<Alert[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         loadAlerts();
-    }, []);
+    }, [sensorId]);
 
     const loadAlerts = async () => {
         setLoading(true);
-        const data = await getOpenAlerts(); // ton service qui retourne les alertes ouvertes
+        let data: Alert[] = [];
+        if (sensorId) {
+            data = await getOpenAlertsBySensor(sensorId);
+        } else {
+            data = await getOpenAlerts();
+        }
         setAlerts(data);
         setLoading(false);
     };

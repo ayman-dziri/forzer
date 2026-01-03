@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    font-size: 1rem;
+    margin-top: 40px;
+}

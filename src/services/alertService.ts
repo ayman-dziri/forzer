@@ -1,12 +1,18 @@
 import apiClient from "../api/apiClient";
 import { Alert } from "../models/Alert";
 
-interface AlertResponse {
-    count: number;
-    results: Alert[];
-}
+export const getOpenAlerts = async (): Promise<Alert[]> => {
+    const response = await apiClient.get<Alert[]>(
+        "/alerts?status=OPEN"
+    );
+    return response.data;
+};
 
-export const getOpenAlertsBySensor = async (sensorId: number): Promise<Alert[]> => {
-    const res = await apiClient.get<AlertResponse>(`/api/alerts/?status=OPEN&sensor_id=${sensorId}`);
-    return res.data.results;
+export const getOpenAlertsBySensor = async (
+    sensorId: number
+): Promise<Alert[]> => {
+    const response = await apiClient.get<Alert[]>(
+        `/alerts?status=OPEN&sensor_id=${sensorId}`
+    );
+    return response.data;
 };

@@ -3,8 +3,10 @@ import { Ticket } from "../../models/Ticket";
 import {
     getOpenTickets,
     assignTicket,
-    closeTicket
+    closeTicket,
 } from "../../services/ticketService";
+import styles from "./TicketList.module.css";
+
 export default function TicketList() {
     const [tickets, setTickets] = useState<Ticket[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -21,7 +23,7 @@ export default function TicketList() {
     };
 
     const handleAssign = async (ticketId: number) => {
-        await assignTicket(ticketId, 4); // ex: Chef Equipe
+        await assignTicket(ticketId, 4); // Chef Equipe (exemple)
         loadTickets();
     };
 
@@ -32,40 +34,60 @@ export default function TicketList() {
         loadTickets();
     };
 
-    if (loading) return <p>Chargement des tickets...</p>;
+    if (loading) return <p className={styles.loading}>Chargement des tickets...</p>;
 
     return (
-        <div>
-            <h2>🎫 Tickets ouverts</h2>
+        <div className={styles.container}>
+            <h2 className={styles.title}>🎫 Tickets ouverts</h2>
 
-            {tickets.map(ticket => (
-                <div key={ticket.id} style={{ border: "1px solid #ccc", margin: 10 }}>
-                    <h3>{ticket.title}</h3>
-                    <p>{ticket.description}</p>
+            {tickets.map((ticket) => (
+                <div key={ticket.id} className={styles.ticketCard}>
+                    <h3 className={styles.ticketTitle}>{ticket.title}</h3>
+                    <p className={styles.description}>{ticket.description}</p>
 
-                    <p>
-                        📌 Priorité : <b>{ticket.priority}</b>
+                    <p className={styles.info}>
+                        📌 Priorité :{" "}
+                        <span className={styles.priority}>{ticket.priority}</span>
                     </p>
-                    <p>
+
+                    <p className={styles.info}>
                         👤 Assigné à :{" "}
                         {ticket.assigned_to
                             ? ticket.assigned_to.full_name
                             : "Non assigné"}
                     </p>
 
-                    <p>📊 Statut : {ticket.status}</p>
+                    <p
+                        className={`${styles.status} ${
+                            ticket.status === "OPEN"
+                                ? styles.open
+                                : ticket.status === "ASSIGNED"
+                                    ? styles.assigned
+                                    : styles.closed
+                        }`}
+                    >
+                        📊 Statut : {ticket.status}
+                    </p>
 
-                    {ticket.status === "OPEN" && (
-                        <button onClick={() => handleAssign(ticket.id)}>
-                            Assigner
-                        </button>
-                    )}
+                    <div className={styles.actions}>
+                        {ticket.status === "OPEN" && (
+                            <button
+                                className={`${styles.button} ${styles.assign}`}
+                                onClick={() => handleAssign(ticket.id)}
+                            >
+                                Assigner
+                            </button>
+                        )}
 
-                    {ticket.status !== "CLOSED" && (
-                        <button onClick={() => handleClose(ticket.id)}>
-                            Clôturer
-                        </button>
-                    )}
+                        {ticket.status !== "CLOSED" && (
+                            <button
+                                className={`${styles.button} ${styles.close}`}
+                                onClick={() => handleClose(ticket.id)}
+                            >
+                                Clôturer
+                            </button>
+                        )}
+                    </div>
                 </div>
             ))}
         </div>
