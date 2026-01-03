@@ -1,0 +1,28 @@
+.container {
+
+}
+
+.pageTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.listSensors{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.linkWrapper {
+    text-decoration: none;
+    color: inherit;
+}
+
+.empty {
+    font-style: italic;
+    color: gray;
+}

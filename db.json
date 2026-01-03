@@ -1,0 +1,131 @@
+{
+  "sensors": [
+    {
+      "id": 1,
+      "name": "Frigo A - Biologie",
+      "sensor_type": "DHT11",
+      "esp8266_chip_id": "ESP-9F12AB",
+      "location": "Salle 1",
+      "status": "ONLINE",
+      "last_seen_at": "2026-01-01T20:40:00+01:00",
+      "thresholds": {
+        "temp_min": 2,
+        "temp_max": 8,
+        "hum_min": 35,
+        "hum_max": 65
+      }
+    },
+    {
+      "id": 2,
+      "name": "Frigo B - Chimie",
+      "sensor_type": "DHT11",
+      "esp8266_chip_id": "ESP-77CC01",
+      "location": "Salle 2",
+      "status": "OFFLINE",
+      "last_seen_at": "2026-01-01T19:20:00+01:00",
+      "thresholds": {
+        "temp_min": 2,
+        "temp_max": 8,
+        "hum_min": 30,
+        "hum_max": 70
+      }
+    }
+  ],
+
+  "measurements": [
+    {
+      "id": 1,
+      "sensor_id": 1,
+      "temperature": 6.5,
+      "humidity": 42,
+      "status": "OK",
+      "captured_at": "2026-01-02T09:00:00+01:00"
+    },
+    {
+      "id": 2,
+      "sensor_id": 1,
+      "temperature": 9.8,
+      "humidity": 40,
+      "status": "ALERT",
+      "captured_at": "2026-01-02T10:00:00+01:00"
+    },
+    {
+      "id": 3,
+      "sensor_id": 2,
+      "temperature": 5.2,
+      "humidity": 60,
+      "status": "OK",
+      "captured_at": "2026-01-02T09:30:00+01:00"
+    }
+  ],
+
+  "alerts": [
+    {
+      "id": 1,
+      "sensor_id": 1,
+      "severity": "HIGH",
+      "reason": "Température hors seuil",
+      "status": "OPEN",
+      "current_escalation_level": 2,
+      "next_escalation_at": "2026-01-02T12:00:00+01:00"
+    },
+    {
+      "id": 2,
+      "sensor_id": 2,
+      "severity": "MEDIUM",
+      "reason": "Capteur hors ligne",
+      "status": "OPEN",
+      "current_escalation_level": 1,
+      "next_escalation_at": null
+    }
+  ],
+
+  "tickets": [
+    {
+      "id": 1,
+      "title": "Température critique - Frigo A",
+      "description": "Température dépassant 8°C pendant 15 minutes",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "assigned_to": null,
+      "sensor_id": 1
+    },
+    {
+      "id": 2,
+      "title": "Capteur hors ligne",
+      "description": "Le capteur ne répond plus depuis 1 heure",
+      "priority": "MEDIUM",
+      "status": "IN_PROGRESS",
+      "assigned_to": {
+        "id": 4,
+        "full_name": "Chef Équipe"
+      },
+      "sensor_id": 2
+    }
+  ],
+
+  "audit_logs": [
+    {
+      "id": 1,
+      "timestamp": "2026-01-02T08:30:00+01:00",
+      "actor": {
+        "id": 1,
+        "full_name": "Admin Système"
+      },
+      "action": "CREATE_SENSOR",
+      "entity": "Sensor",
+      "entity_id": 1
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-01-02T09:15:00+01:00",
+      "actor": {
+        "id": 4,
+        "full_name": "Chef Équipe"
+      },
+      "action": "CLOSE_ALERT",
+      "entity": "Alert",
+      "entity_id": 1
+    }
+  ]
+}

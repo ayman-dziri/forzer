@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/dashboard/Dashboard";
+import SensorDetails from "./pages/sensor/SensorDetails";
+import Alerts from "./pages/alert/Alert";
+import Tickets from "./pages/ticket/Tickets";
+import AuditLogs from "./pages/audit/AuditLogs";
+import Exports from "./pages/export/Exports";
+import Layout from "./pages/layout/Layout";
+import SensorList from "./components/sensor/SensorList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="sensors" element={<SensorList />} />
+                    <Route path="sensors/:id" element={<SensorDetails />} />
+                    <Route path="alerts" element={<Alerts />} />
+                    <Route path="tickets" element={<Tickets />} />
+                    <Route path="audit" element={<AuditLogs />} />
+                    <Route path="exports" element={<Exports />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
+};
 
 export default App;
