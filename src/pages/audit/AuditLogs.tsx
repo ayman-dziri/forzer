@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAuditLogs } from "../services/auditService";
-import { AuditLog } from "../models/AuditLog";
-import Loader from "../components/common/Loader";
+import { getAuditLogs } from "../../services/auditService";
+import { AuditLog } from "../../models/AuditLog";
+import Loader from "../../components/common/Loader";
 import styles from "./AuditLogs.module.css";
 
 export default function AuditLogs() {
