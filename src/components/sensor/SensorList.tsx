@@ -3,6 +3,7 @@ import { getSensors } from "../../services/sensorService";
 import { Sensor } from "../../models/Sensor";
 import SensorCard from "./SensorCard";
 import styles from "./SensorList.module.css";
+import {Link} from "react-router-dom";
 
 export default function SensorList() {
     const [sensors, setSensors] = useState<Sensor[]>([]);
@@ -17,9 +18,18 @@ export default function SensorList() {
 
     return (
         <div className={styles.container}>
-            {sensors.map((sensor) => (
-                <SensorCard key={sensor.id} sensor={sensor} />
+            <h1 className={styles.pageTitle}>Vos Capteurs</h1>
+            <div className={styles.listSensors}>
+                {sensors.map((sensor) => (
+                    <Link
+                        key={sensor.id}
+                        to={`/sensors/${sensor.id}`}  // navigation vers les details du capteur
+                        className={styles.linkWrapper}
+                    >
+                        <SensorCard sensor={sensor} />
+                    </Link>
             ))}
+            </div>
         </div>
     );
 }

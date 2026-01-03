@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Sensor } from "../models/Sensor";
-import { Measurement } from "../models/Measurement";
-import { getLatestMeasurement } from "../services/measurementService";
-import {getSensorById, getSensors} from "../services/sensorService";
-import LatestMeasurement from "../components/measurement/LatestMeasurement";
-import MeasurementTable from "../components/measurement/MeasurementTable";
+import { Sensor } from "../../models/Sensor";
+import { Measurement } from "../../models/Measurement";
+import { getLatestMeasurement } from "../../services/measurementService";
+import {getSensorById, getSensors} from "../../services/sensorService";
+import LatestMeasurement from "../../components/measurement/LatestMeasurement";
+import MeasurementTable from "../../components/measurement/MeasurementTable";
 import styles from "./SensorDetails.module.css";
 
 const SensorDetails: React.FC = () => {

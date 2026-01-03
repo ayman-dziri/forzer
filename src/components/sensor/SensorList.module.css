@@ -1,13 +1,28 @@
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 20px;
+
+}
+
+.pageTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.listSensors{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.linkWrapper {
+    text-decoration: none;
+    color: inherit;
 }
 
 .empty {
-    text-align: center;
-    color: #777;
-    font-size: 1rem;
-    margin-top: 40px;
+    font-style: italic;
+    color: gray;
 }

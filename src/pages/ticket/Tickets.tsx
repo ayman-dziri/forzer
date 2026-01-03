@@ -1,5 +1,5 @@
 import React from "react";
-import TicketList from "../components/ticket/TicketList";
+import TicketList from "../../components/ticket/TicketList";
 import styles from "./Tickets.module.css";
 
 const Tickets: React.FC = () => {
