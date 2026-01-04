@@ -67,6 +67,25 @@
     gap: 16px;
 }
 
+.graphsSection {
+    margin-top: 24px;
+}
+
+.sensorName{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.graphCard {
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+
+
 /* Responsive : mobile */
 @media (max-width: 600px) {
     .container {

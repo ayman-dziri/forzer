@@ -28,7 +28,7 @@ export default function LatestMeasurement({ measurement }: Props) {
             <p className={styles.row}>
                 💧 Humidité : <strong>{measurement.humidity} %</strong>
             </p>
-            
+
 
             <small className={styles.timestamp}>
                 ⏱ Capturée le :{" "}
