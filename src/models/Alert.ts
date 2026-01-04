@@ -1,4 +1,9 @@
-export type AlertStatus = "OPEN" | "CLOSED";
+export type AlertStatus =
+    | "PENDING"
+    | "ACKNOWLEDGED"
+    | "ARCHIVED";
+
+
 export type AlertSeverity = "LOW" | "MEDIUM" | "HIGH";
 
 export interface AlertChannel {

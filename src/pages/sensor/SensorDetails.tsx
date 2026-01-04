@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Sensor } from "../../models/Sensor";
 import { Measurement } from "../../models/Measurement";
 import { getLatestMeasurement } from "../../services/measurementService";
-import {getSensorById, getSensors} from "../../services/sensorService";
+import {getSensorById} from "../../services/sensorService";
 import LatestMeasurement from "../../components/measurement/LatestMeasurement";
 import MeasurementTable from "../../components/measurement/MeasurementTable";
 import styles from "./SensorDetails.module.css";
@@ -40,8 +40,34 @@ const SensorDetails: React.FC = () => {
                 <>
                     <div className={styles.sensorInfo}>
                         <h2>{sensor.name}</h2>
-                        <p>📍 Location: {sensor.location}</p>
-                        <p>🔌 Status: {sensor.status}</p>
+                        <p className={styles.attribute}>📍 Location : {sensor.location}</p>
+
+                        <p className={styles.info}>
+                            🔌{" "}
+                            <span
+                                className={`${styles.status} ${
+                                    sensor.is_active ? styles.active : styles.inactive
+                                }`}
+                            >
+                                {sensor.is_active ? "ONLINE" : "OFFLINE"}
+                            </span>
+                        </p>
+
+                        {sensor.last_seen_at && (
+                            <p className={styles.attribute}>
+                                ⏱ Dernière activité :{" "}
+                                {new Date(sensor.last_seen_at).toLocaleString()}
+                            </p>
+                        )}
+
+                        <p className={styles.info}>
+                            🌡 {sensor.temp_min}°C – {sensor.temp_max}°C
+                        </p>
+
+                        <p className={styles.info}>
+                            💧 {sensor.hum_min}% – {sensor.hum_max}%
+                        </p>
+
                     </div>
 
                     <div className={styles.section}>

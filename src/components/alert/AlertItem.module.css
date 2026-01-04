@@ -1,10 +1,11 @@
 .card {
-    background-color: #fff7f7;
+    width: 93%;
+    background-color: #fbeded;
     border-left: 4px solid #e74c3c;
     border-radius: 8px;
     padding: 12px 16px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .title {
@@ -29,3 +30,60 @@
     color: #777;
     margin-top: 4px;
 }
+
+.textarea {
+    width: 80%;
+    min-height: 70px;
+    margin-top: 10px;
+    padding: 10px 12px;
+
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #333;
+
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.textarea::placeholder {
+    color: #999;
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+
+.ackButton {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    color: #fff;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ackButton:hover:not(:disabled) {
+    background-color: #c0392b;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.ackButton:disabled {
+    background-color: #f1b0a8;
+    cursor: not-allowed;
+}
+

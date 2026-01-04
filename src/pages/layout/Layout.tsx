@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = () => {
                     <ul>
                         <li><Link to="/">Dashboard</Link></li>
                         <li><Link to="/sensors">Capteurs</Link></li>
-                        <li><Link to="/alerts">Alertes</Link></li>
+                        <li><Link to="/alerts">Incidents</Link></li>
                         <li><Link to="/tickets">Tickets</Link></li>
                         <li><Link to="/audit">Audit Logs</Link></li>
                         <li><Link to="/exports">Exports</Link></li>

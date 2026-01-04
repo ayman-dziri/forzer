@@ -18,13 +18,14 @@ export default function SensorCard({ sensor }: Props) {
                 🔌{" "}
                 <span
                     className={`${styles.status} ${
-                        sensor.status === "ONLINE" ? styles.active : styles.inactive
+                        sensor.is_active ? styles.active : styles.inactive
                     }`}
                 >
-                    {sensor.status}
+                    {sensor.is_active ? "ONLINE" : "OFFLINE"}
                 </span>
-
             </p>
+
         </div>
+
     );
 }
