@@ -33,7 +33,7 @@ export default function AlertList({ sensorId }: Props) {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>🚨 Alertes ouvertes</h2>
+            <h2 className={styles.pageTitle}>🚨 Alertes ouvertes</h2>
 
             {alerts.length === 0 ? (
                 <p className={styles.empty}>Aucune alerte en cours.</p>

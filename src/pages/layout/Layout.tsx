@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {Link, Outlet} from "react-router-dom";
+import {Link, NavLink, Outlet} from "react-router-dom";
 import styles from "./Layout.module.css";
 
 interface LayoutProps {
@@ -12,6 +12,7 @@ const Layout: React.FC<LayoutProps> = () => {
             {/* Sidebar Fixe */}
             <aside className={styles.sidebar}>
                 <h2>Frozer</h2>
+                <hr/>
                 <nav>
                     <ul>
                         <li><Link to="/">Dashboard</Link></li>
@@ -20,6 +21,10 @@ const Layout: React.FC<LayoutProps> = () => {
                         <li><Link to="/tickets">Tickets</Link></li>
                         <li><Link to="/audit">Audit Logs</Link></li>
                         <li><Link to="/exports">Exports</Link></li>
+                        <NavLink to="/admin/sensors/new">
+                            ➕ Ajouter un capteur
+                        </NavLink>
+
                     </ul>
                 </nav>
             </aside>
@@ -31,7 +36,7 @@ const Layout: React.FC<LayoutProps> = () => {
                 </header>
 
                 {/* Wrapper pour le contenu défilant */}
-                <div className={styles.contentWrapper}>
+                <div>
                     <main className={styles.content}>
                         <Outlet /> {/* Ici s'affichent les pages */}
                     </main>
