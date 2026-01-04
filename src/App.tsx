@@ -7,6 +7,7 @@ import AuditLogs from "./pages/audit/AuditLogs";
 import Exports from "./pages/export/Exports";
 import Layout from "./pages/layout/Layout";
 import SensorList from "./components/sensor/SensorList";
+import AddSensor from "./pages/admin/AddSensor";
 
 const App: React.FC = () => {
     return (
@@ -20,6 +21,8 @@ const App: React.FC = () => {
                     <Route path="tickets" element={<Tickets />} />
                     <Route path="audit" element={<AuditLogs />} />
                     <Route path="exports" element={<Exports />} />
+                    <Route path="/admin/sensors/new" element={<AddSensor />} />
+
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -58,10 +58,14 @@
     border-radius: 2px;
 }
 
+.sidebar hr{
+    width: 80%;
+}
+
 /* Navigation */
 .sidebar nav {
     flex: 1;
-    margin-top: 0.5rem; /* Espacement réduit */
+    margin-top: 1rem; /* Espacement réduit */
 }
 
 .sidebar ul {
@@ -71,7 +75,7 @@
 }
 
 .sidebar li {
-    margin-bottom: 1rem; /* Espacement réduit */
+    margin-bottom: 0.7rem; /* Espacement réduit */
 }
 
 .sidebar a {
@@ -167,8 +171,8 @@
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border: 1px solid #e2e8f0;
-    padding: 1.25rem;
-    margin-bottom: 1.25rem;
+    /*padding: 1.25rem;*/
+    /*margin-bottom: 1.25rem;*/
 }
 
 /* Responsive */
@@ -247,8 +251,7 @@
     }
 
     .content {
-        padding: 1.5rem;
-        margin-top: 60px;
+        margin-bottom: 2rem;
     }
 }
 
@@ -262,8 +265,7 @@
     }
 
     .content {
-        padding: 1rem;
-        margin-top: 50px;
+
     }
 
     .content > * {
