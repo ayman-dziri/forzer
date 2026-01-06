@@ -8,6 +8,11 @@ export default function AuditLogs() {
     const [logs, setLogs] = useState<AuditLog[]>([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
+    const pageSize = 20;
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const paginatedLogs = logs.slice(startIndex, endIndex);
+
 
     useEffect(() => {
         setLoading(true);
@@ -34,7 +39,7 @@ export default function AuditLogs() {
                     </tr>
                     </thead>
                     <tbody>
-                    {logs.map(log => (
+                    {paginatedLogs.map(log => (
                         <tr key={log.id}>
                             <td>{new Date(log.timestamp).toLocaleString()}</td>
                             <td>{log.actor?.full_name ?? "Système"}</td>
@@ -42,6 +47,7 @@ export default function AuditLogs() {
                             <td>{log.entity} #{log.entity_id}</td>
                         </tr>
                     ))}
+
                     </tbody>
                 </table>
             </div>
@@ -53,7 +59,12 @@ export default function AuditLogs() {
                 >
                     ◀ Précédent
                 </button>
-                <button onClick={() => setPage(p => p + 1)}>Suivant ▶</button>
+                <button
+                    disabled={page * pageSize >= logs.length}
+                    onClick={() => setPage(p => p + 1)}
+                >
+                    Suivant ▶
+                </button>
             </div>
         </div>
     );
