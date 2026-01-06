@@ -15,8 +15,9 @@ export const assignTicket = async (
 ): Promise<Ticket> => {
     const res = await apiClient.patch<Ticket>(`/tickets/${ticketId}/`, {
         assigned_to: userId,
+        status: "ASSIGNED",
     });
-    return res.data; // ticket direct
+    return res.data;
 };
 
 
@@ -26,7 +27,8 @@ export const closeTicket = async (
     resolution: string
 ): Promise<Ticket> => {
     const res = await apiClient.patch<Ticket>(`/tickets/${ticketId}/`, {
+        status: "CLOSED",
         resolution,
     });
-    return res.data; // ticket direct
+    return res.data;
 };

@@ -32,6 +32,20 @@
     color: #555;
 }
 
+.status {
+    font-weight: 500;
+}
+
+.active {
+    color: #27ae60;
+}
+
+.inactive {
+    color: #c0392b;
+}
+
+
+
 .section {
     margin-bottom: 24px;
 }

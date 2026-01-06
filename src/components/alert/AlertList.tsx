@@ -24,10 +24,10 @@ export default function AlertList() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>🚨 Alertes ouvertes</h2>
+            <h2 className={styles.title}>🚨 Incidents ouvertes</h2>
 
             {alerts.length === 0 ? (
-                <p className={styles.empty}>Aucune alerte en cours.</p>
+                <p className={styles.empty}>Aucun incident en cours.</p>
             ) : (
                 alerts.map((alert) => <AlertItem key={alert.id} alert={alert} />)
             )}
