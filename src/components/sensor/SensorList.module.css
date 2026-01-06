@@ -1,28 +1,49 @@
 .container {
-    max-width: 1000px;
-    padding-bottom: 2rem;
-    padding-left: 2rem;
+    max-width: 1200px;
+    padding: 2rem;
 }
 
+/* Titre */
 .pageTitle {
     font-size: 2rem;
     font-weight: 700;
     color: #2c3e50;
+    margin-bottom: 1.5rem;
 }
 
-.listSensors{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+/* Grille des capteurs */
+.listSensors {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+
+    max-height: 45vh;
+    overflow-y: auto;
+    padding-top: 1rem;
+    padding-right: 0.5rem;
 }
 
+
+/* Lien sans casser la carte */
 .linkWrapper {
     text-decoration: none;
     color: inherit;
+    height: 100%;
+    display: block;
 }
 
+/* Cas vide */
 .empty {
     font-style: italic;
     color: gray;
 }
+
+.listSensors::-webkit-scrollbar {
+    width: 6px;
+}
+
+.listSensors::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 4px;
+}
+

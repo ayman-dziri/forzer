@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SensorList from "../../components/sensor/SensorList";
 import styles from "./Dashboard.module.css";
-import AlertList from "../alert/Alert";
 import { NavLink } from "react-router-dom";
 import { getSensors } from "../../services/sensorService";
 import { getMeasurements } from "../../services/measurementService";
@@ -42,13 +41,19 @@ const Dashboard: React.FC = () => {
             </div>
 
             <div className={styles.graphsSection}>
-                {sensors.map((sensor) => (
+                {[...sensors].reverse().map((sensor) => (
                     <div key={sensor.id} className={styles.graphCard}>
-                        <h3 className={styles.sensorName}>{sensor.name} - Graphiques</h3>
-                        <SensorGraphs measurements={measurementsMap[sensor.id] || []} />
+                        <h3 className={styles.sensorName}>
+                            {sensor.name} - Graphiques
+                        </h3>
+
+                        <SensorGraphs
+                            measurements={measurementsMap[sensor.id] || []}
+                        />
                     </div>
                 ))}
             </div>
+
         </div>
     );
 };
