@@ -21,11 +21,6 @@ export default function AlertItem({ alert }: Props) {
     );
 
     const handleAcknowledge = async () => {
-        if (!comment.trim()) {
-            window.alert("Erreur lors de l'accusé de réception");
-            return;
-        }
-
         try {
             setLoading(true);
             await acknowledgeAlert(alert.id, comment);

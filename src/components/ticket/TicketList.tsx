@@ -10,6 +10,11 @@ import styles from "./TicketList.module.css";
 export default function TicketList() {
     const [tickets, setTickets] = useState<Ticket[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
+    const [action, setAction] = useState<"ASSIGN" | "CLOSE" | null>(null);
+    const [resolution, setResolution] = useState("");
+    const [modalOpen, setModalOpen] = useState(false);
+
 
     useEffect(() => {
         loadTickets();
@@ -21,6 +26,40 @@ export default function TicketList() {
         setTickets(data);
         setLoading(false);
     };
+    const openAssignModal = (ticket: Ticket) => {
+        setSelectedTicket(ticket);
+        setAction("ASSIGN");
+        setModalOpen(true);
+    };
+
+    const openCloseModal = (ticket: Ticket) => {
+        setSelectedTicket(ticket);
+        setAction("CLOSE");
+        setResolution("");
+        setModalOpen(true);
+    };
+
+    const handleConfirm = async () => {
+        if (!selectedTicket || !action) return;
+
+        if (action === "ASSIGN") {
+            await assignTicket(selectedTicket.id, 4);
+        }
+
+        if (action === "CLOSE") {
+            if (!resolution.trim()) {
+                alert("Veuillez saisir une résolution");
+                return;
+            }
+            await closeTicket(selectedTicket.id, resolution);
+        }
+
+        setModalOpen(false);
+        setSelectedTicket(null);
+        setAction(null);
+        loadTickets();
+    };
+
 
     const handleAssign = async (ticketId: number) => {
         await assignTicket(ticketId, 4); // Chef Equipe (exemple)
@@ -73,7 +112,7 @@ export default function TicketList() {
                         {ticket.status === "OPEN" && (
                             <button
                                 className={`${styles.button} ${styles.assign}`}
-                                onClick={() => handleAssign(ticket.id)}
+                                onClick={() => openAssignModal(ticket)}
                             >
                                 Assigner
                             </button>
@@ -82,7 +121,7 @@ export default function TicketList() {
                         {ticket.status !== "CLOSED" && (
                             <button
                                 className={`${styles.button} ${styles.close}`}
-                                onClick={() => handleClose(ticket.id)}
+                                onClick={() => openCloseModal(ticket)}
                             >
                                 Clôturer
                             </button>
@@ -90,6 +129,48 @@ export default function TicketList() {
                     </div>
                 </div>
             ))}
+
+            {modalOpen && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.modal}>
+                        <h3>
+                            {action === "ASSIGN"
+                                ? "Assigner le ticket"
+                                : "Clôturer le ticket"}
+                        </h3>
+
+                        <p>
+                            Ticket : <strong>{selectedTicket?.title}</strong>
+                        </p>
+
+                        {action === "CLOSE" && (
+                            <textarea
+                                className={styles.textarea}
+                                placeholder="Résolution du problème..."
+                                value={resolution}
+                                onChange={(e) => setResolution(e.target.value)}
+                            />
+                        )}
+
+                        <div className={styles.modalActions}>
+                            <button
+                                className={styles.cancel}
+                                onClick={() => setModalOpen(false)}
+                            >
+                                Annuler
+                            </button>
+
+                            <button
+                                className={styles.confirm}
+                                onClick={handleConfirm}
+                            >
+                                Confirmer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }
