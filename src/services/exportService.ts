@@ -7,24 +7,23 @@ interface ExportResponse {
     expires_at: string;
 }
 
-export const exportMeasurements = async (
-    sensorId: number,
-    from: string,
-    to: string
-): Promise<ExportResponse> => {
-    const response = await apiClient.get<ExportResponse>(
-        `/exports/measurements/?sensor_id=${sensorId}&format=csv&from=${from}&to=${to}`
+export const exportMeasurementsPdf = async (sensorId: number) => {
+    const response = await apiClient.get(
+        `/measurements/export/pdf/?sensor_id=${sensorId}`,
+        {
+            responseType: "blob", // 🔥 TRÈS IMPORTANT
+        }
     );
+
     return response.data;
 };
 
 
-export const exportAuditLogs = async (
-    from: string,
-    to: string
-): Promise<ExportResponse> => {
+
+export const exportAuditLogs = async (from: string, to: string): Promise<ExportResponse> => {
     const response = await apiClient.get<ExportResponse>(
         `/exports/audit/?format=pdf&from=${from}&to=${to}`
     );
     return response.data;
 };
+
