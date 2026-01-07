@@ -50,7 +50,7 @@ const Exports: React.FC = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.pageTitle}>Exports Audit PDF</h1>
+            <h1 className={styles.pageTitle}>Exporter les mesures en PDF</h1>
 
             <div className={styles.dateInputs}>
                 <label>
